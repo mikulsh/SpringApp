@@ -4,8 +4,9 @@ create-network:
 build:
 	docker run -v ~/.m2:/root/.m2 -v ${PWD}:/usr/src  -w /usr/src  maven:3-jdk-8 mvn clean package -DskipTests
 	docker build -t sandy .
+	docker build -t db -f Dockerfile.mysql .
 
 run:
-	docker run -it --rm --name db -e MYSQL_USER=sandy -e MYSQL_PASSWORD=sandy123 -e MYSQL_DATABASE=springbootdb --net sandy centos/mysql-57-centos7
-	docker run -it --rm --net sandy sandy
+	docker run -it --rm -d --name db --net sandy db
+	docker run -it --rm -p 8080:8080 -d --net sandy sandy
 

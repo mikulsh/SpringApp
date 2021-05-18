@@ -1,0 +1,6 @@
+FROM centos/mysql-57-centos7
+
+ENV MYSQL_USER=sandy
+ENV MYSQL_PASSWORD=sandy123
+ENV MYSQL_DATABASE=springbootdb
+
