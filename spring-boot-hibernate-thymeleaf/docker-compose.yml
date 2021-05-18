@@ -1,0 +1,53 @@
+# mysql:
+#   image: mysql:8.0
+#   ports:
+#     - "3306:3306"
+#   environment:
+#     - MYSQL_ROOT_PASSWORD=password
+#     - MYSQL_USER=mehul
+#     - MYSQL_PASSWORD=password
+#     - MYSQL_DATABASE=employeedb
+#   volumes:
+#     - "./conf.d:/etc/mysql/conf.d:ro"
+#     - "dbdata:/var/lib/mysql"
+
+version: '3'
+services:
+  springboot:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: 
+      - mysql
+    
+  mysql:
+    image: mysql:8.0
+    restart: always
+    networks:
+      mysql:
+        ipv4_address: 172.23.0.2
+    ports:
+      - "3306:3306"
+    environment:
+        MYSQL_DATABASE: employeedb
+        MYSQL_USER: 'root'
+        MYSQL_PASSWORD: 'password'
+        MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - my-db:/var/lib/mysql
+    
+  busybox:
+    image: nginx
+    restart: always
+
+networks: 
+  mysql:   
+    driver: bridge
+    external: 
+      name: mysql
+  
+volumes:
+  my-db:
