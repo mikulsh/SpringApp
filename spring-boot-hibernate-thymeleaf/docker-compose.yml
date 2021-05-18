@@ -26,9 +26,6 @@ services:
   mysql:
     image: mysql:8.0
     restart: always
-    networks:
-      mysql:
-        ipv4_address: 172.23.0.2
     ports:
       - "3306:3306"
     environment:
@@ -43,11 +40,5 @@ services:
     image: nginx
     restart: always
 
-networks: 
-  mysql:   
-    driver: bridge
-    external: 
-      name: mysql
-  
 volumes:
   my-db:
