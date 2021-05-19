@@ -7,6 +7,8 @@ build:
 	docker build -t db -f Dockerfile.mysql .
 
 run:
-	docker run -it --rm -d --name db --net sandy db
-	docker run -it --rm -p 8080:8080 -d --net sandy sandy
+	docker rm -f db-dev-dev || true
+	docker run -it --rm -d --name db-dev-dev --net sandy db
+	docker rm -f sandy || true
+	docker run -it --rm -p 8080:8080 --name  sandy -d --net sandy sandy
 

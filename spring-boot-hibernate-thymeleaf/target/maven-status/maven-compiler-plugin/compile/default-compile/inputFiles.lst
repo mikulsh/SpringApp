@@ -1,6 +1,0 @@
-/home/opstree/ot-SpringBoot/spring-boot-hibernate-thymeleaf/src/main/java/com/howtodoinjava/demo/exception/RecordNotFoundException.java
-/home/opstree/ot-SpringBoot/spring-boot-hibernate-thymeleaf/src/main/java/com/howtodoinjava/demo/model/EmployeeEntity.java
-/home/opstree/ot-SpringBoot/spring-boot-hibernate-thymeleaf/src/main/java/com/howtodoinjava/demo/web/EmployeeMvcController.java
-/home/opstree/ot-SpringBoot/spring-boot-hibernate-thymeleaf/src/main/java/com/howtodoinjava/demo/DemoApplication.java
-/home/opstree/ot-SpringBoot/spring-boot-hibernate-thymeleaf/src/main/java/com/howtodoinjava/demo/repository/EmployeeRepository.java
-/home/opstree/ot-SpringBoot/spring-boot-hibernate-thymeleaf/src/main/java/com/howtodoinjava/demo/service/EmployeeService.java
