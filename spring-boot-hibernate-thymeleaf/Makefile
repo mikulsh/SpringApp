@@ -8,7 +8,15 @@ build:
 
 run:
 	docker rm -f db-dev-dev || true
+	docker rm -f db || true
 	docker run -it --rm -d --name db-dev-dev --net sandy db
 	docker rm -f sandy || true
 	docker run -it --rm -p 8080:8080 --name  sandy -d --net sandy sandy
+
+run-external:
+	docker rm -f db || true
+	docker rm -f db-dev-dev || true
+	docker run -it --rm -d --name db --net sandy db
+	docker rm -f sandy || true
+	docker run -it -d --rm -p 8080:8080 --name sandy -e SPRING_CONFIG_LOCATION=/etc/app/config/ -v ${PWD}/config:/etc/app/config/ --net sandy sandy
 
